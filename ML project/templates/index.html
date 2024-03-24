@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student Mark Predictor ML App</title>
+
+  <style>
+    /* Gradient background */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #4facfe, #00f2fe);
+      font-family: Arial, sans-serif;
+    }
+
+    /* Container for content */
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Heading style */
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    /* Form style */
+    form {
+      text-align: center;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    /* Button style */
+    .button_css {
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button_css:hover {
+      background-color: #0056b3;
+    }
+
+    /* Predicted output style */
+    .prediction {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Content container -->
+  <div class="container">
+    <!-- Image -->
+    <img src="static/images/college.png" alt="University" style="display: block; margin: 0 auto; width: 80%; max-width: 400px;">
+
+    <h1>Student Mark Predictor</h1>
+
+    <!-- Form to input study hours -->
+    <form action="{{ url_for('predict')}}" method="post">
+      <label for="study_hours">Enter Your Study Hours:</label><br>
+      <input type="number" name="study_hours" id="study_hours" placeholder="Study hours" required><br><br>
+      <button type="submit" class="button_css">Predict Marks</button>
+    </form>
+
+    <!-- Predicted output -->
+    <div class="prediction">
+      <h2>{{ prediction_text }}</h2>
+    </div>
+  </div>
+
+</body>
+</html>
